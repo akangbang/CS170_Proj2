@@ -5,7 +5,6 @@ import random
 def forward_selection(problem: Problem) -> tuple[tuple, float]:
     # Create local alias
     accuracy_map = problem.set_accuracy_map
-
     while len(problem.features_remaining):
         # Generate new subset
         problem.new_subsets("Forward")
@@ -23,9 +22,9 @@ def forward_selection(problem: Problem) -> tuple[tuple, float]:
         # Select the feature
         problem.select_feature(best_subset, chosen_feature, "Forward")
 
-    return max(problem.chosen_sets, key=lambda chosen_set: chosen_set[1])
+    # Get the best set and check if the accuracy decreased
+    chosen_set = max(problem.chosen_sets, key=lambda chosen_set: chosen_set[1])
+    if problem.chosen_sets.index(chosen_set) < len(problem.chosen_sets) - 1:
+        print("(Warning, Accuracy has decreased!)")
 
-
-if __name__ == "__main__":
-    # Test
-    print(f"The selected feature is {forward_selection(Problem(4))}")
+    return chosen_set
