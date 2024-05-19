@@ -17,7 +17,7 @@ print("\nType the number of the algorithm you want to run.\n"
         "\tBackward Elimination\n")
 
 # ask for which algorithm to run
-chosen_alg = input()
+chosen_alg = int(input())
 algo_functions = {
     1: forward_selection,
     2: backward_elimination
