@@ -7,9 +7,10 @@ from backward_elimination import backward_elimination
 print("Welcome to group 27's Feature Selection Algorithm.\n")
 
 # ask for the number of features
-feature_num = int(input("Please enter total number of features: "))
+feature_num = input("Please enter total number of features: ")
 while not feature_num.isdigit():
-    feature_num = int(input("Invalid input, type an integer"))
+    feature_num = input("Invalid input, type an integer")
+feature_num = int(feature_num)
 
 # print the algorithm choices
 print("\nType the number of the algorithm you want to run.\n"
