@@ -35,8 +35,12 @@ def backward_elimination(prob: Problem):
     final_highest_score = 0
     final_best_subset = ()
     for chosen in prob.chosen_sets:
+        if(final_highest_score > chosen[1]):
+            print("(Warning! Accuracy has decreased!)")
         if chosen[1] > final_highest_score:
             final_highest_score = chosen[1]
             final_best_subset = chosen[0]
+    
+    
 
     return (final_best_subset, final_highest_score)
