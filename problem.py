@@ -24,13 +24,13 @@ class Problem:
     def select_feature(self, best_set: tuple, chosen_feature: int, algo: str):
         # Add to the list of chosen subsets the new feature subset
         self.chosen_sets.append((best_set, self.set_accuracy_map[best_set]))
-        # Clear the map to get rid of the non-chosen new feature subsets
-        self.set_accuracy_map.clear()
         # Remove that selected feature from the remaining features list
         self.features_remaining.remove(chosen_feature)
         # Forward: add the new feature to the list of chosen features; Backward: remove the feature from the chosen features
         self.chosen_features = self.chosen_features + (chosen_feature, ) if algo == "Forward" else tuple(x for x in self.chosen_features if x!= chosen_feature)
-
+        # Print out the trace step
         for subset in self.set_accuracy_map:
             print("\tUsing feature(s) " + "{}".format(subset) + " accuracy is " + self.set_accuracy_map[subset] + "%\n")
         print("Feature set " + "{}".format(self.chosen_features) + " was best, accuracy is " + self.set_accuracy_map[best_set] + "%\n\n")
+        # Clear the map to get rid of the non-chosen new feature subsets
+        self.set_accuracy_map.clear()
