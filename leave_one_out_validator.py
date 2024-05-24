@@ -2,7 +2,6 @@ def leave_one_out_validator(data_map):
     # Initialize the count of correct predictions to 0
     correct_predictions = 0
 
-    # Iterate over each instance in the data map by its index
     for instance_index in data_map:
         # Create a copy of the data map to use as the training set
         train_set = data_map.copy()
